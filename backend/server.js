@@ -9,14 +9,19 @@ dotenv.config();
 const app = express();
 
 // ✅ FIXED CORS
-app.use(cors({
-  origin: function (origin, callback) {
-    callback(null, true); // allow all origins
-  },
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type"],
-}));
-app.options("*", cors());
+// 🔥 CORS FIX (FINAL)
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200); // handle preflight
+  }
+
+  next();
+})
+
 
 app.use(express.json());
 
