@@ -31,7 +31,7 @@ function SearchDonor() {
     try {
       const query = new URLSearchParams(filters).toString();
       const res = await axios.get(
-        `http://localhost:5000/api/donors/search?${query}`
+        `https://blood-donar-applicant.onrender.com/api/donors/search?${query}`
       );
       setDonors(res.data.donors);
       setMessage(

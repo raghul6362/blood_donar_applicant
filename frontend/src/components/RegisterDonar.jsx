@@ -34,7 +34,7 @@ function RegisterDonor() {
     setMessage("");
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/donors/register",
+        "https://blood-donor-applicant.onrender.com/api/donors/register",
         formData
       );
       setMessage(res.data.message);
