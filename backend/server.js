@@ -9,7 +9,13 @@ dotenv.config();
 const app = express();
 
 // ✅ FIXED CORS
-app.use(cors());
+app.use(cors({
+  origin: function (origin, callback) {
+    callback(null, true); // allow all origins
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type"],
+}));
 app.options("*", cors());
 
 app.use(express.json());
