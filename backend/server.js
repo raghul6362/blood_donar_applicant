@@ -8,15 +8,18 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
+// ✅ FIXED CORS
 app.use(cors({
-  origin: "*",
+  origin: "https://shiny-treacle-2e29bb.netlify.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  allowedHeaders: ["Content-Type"],
 }));
+
+app.options("*", cors());
+
 app.use(express.json());
 
-// ✅ Test route (for debugging)
+// ✅ Test route
 app.get("/test", (req, res) => {
   res.send("Test route working ✅");
 });
@@ -26,10 +29,10 @@ app.get("/", (req, res) => {
   res.send("Blood Donor API is running...");
 });
 
-// ✅ Donor routes
+// ✅ API routes
 app.use("/api/donors", donorRoutes);
 
-// ✅ 404 handler (optional but helpful)
+// ✅ 404 handler
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -37,7 +40,7 @@ app.use((req, res) => {
   });
 });
 
-// ✅ Connect DB & start server
+// ✅ DB + Server
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
