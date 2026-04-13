@@ -9,12 +9,7 @@ dotenv.config();
 const app = express();
 
 // ✅ FIXED CORS
-app.use(cors({
-  origin: "https://shiny-treacle-2e29bb.netlify.app",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type"],
-}));
-
+app.use(cors());
 app.options("*", cors());
 
 app.use(express.json());
