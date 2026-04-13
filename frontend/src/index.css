@@ -1,0 +1,458 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════
+   BLOOD DONOR CONNECT – PREMIUM DESIGN SYSTEM
+   ═══════════════════════════════════════════ */
+
+:root {
+  /* Primary Crimson Palette */
+  --blood-50: #fef2f2;
+  --blood-100: #fee2e2;
+  --blood-200: #fecaca;
+  --blood-300: #fca5a5;
+  --blood-400: #f87171;
+  --blood-500: #ef4444;
+  --blood-600: #dc2626;
+  --blood-700: #b91c1c;
+  --blood-800: #991b1b;
+  --blood-900: #7f1d1d;
+
+  /* Dark Theme */
+  --dark-900: #0a0a0f;
+  --dark-800: #111118;
+  --dark-700: #1a1a24;
+  --dark-600: #23232f;
+  --dark-500: #2d2d3a;
+  --dark-400: #3a3a4a;
+  --dark-300: #52526a;
+  --dark-200: #7a7a96;
+  --dark-100: #a8a8c0;
+
+  /* Accent */
+  --accent-rose: #f43f5e;
+  --accent-pink: #ec4899;
+  --accent-amber: #f59e0b;
+  --accent-emerald: #10b981;
+  --accent-sky: #0ea5e9;
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Base Reset ─────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--dark-900);
+  color: #e2e2ee;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ──────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dark-800);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--dark-400);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blood-600);
+}
+
+/* ── Animations ─────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(220, 38, 38, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.15); }
+  56% { transform: scale(1); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+/* Staggered animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* ── Glass Card ─────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(220, 38, 38, 0.3);
+  box-shadow: 0 8px 40px rgba(220, 38, 38, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ── Premium Button ─────────────────────── */
+.btn-premium {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, var(--blood-600), var(--accent-rose));
+  color: white;
+  text-decoration: none;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-premium:hover::before {
+  left: 100%;
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+}
+
+.btn-premium:active {
+  transform: translateY(0);
+}
+
+.btn-premium:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-premium:disabled:hover::before {
+  left: -100%;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(220, 38, 38, 0.5);
+  color: var(--blood-400);
+}
+
+.btn-outline:hover {
+  background: rgba(220, 38, 38, 0.1);
+  border-color: var(--blood-500);
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.2);
+}
+
+/* ── Input Styles ───────────────────────── */
+.input-premium {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #e2e2ee;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-premium::placeholder {
+  color: var(--dark-200);
+}
+
+.input-premium:focus {
+  border-color: var(--blood-500);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.input-premium:hover:not(:focus) {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+select.input-premium {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23a8a8c0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+select.input-premium option {
+  background: var(--dark-700);
+  color: #e2e2ee;
+}
+
+textarea.input-premium {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ── Label ──────────────────────────────── */
+.label-premium {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dark-100);
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Section Title ──────────────────────── */
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff, var(--blood-300));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--dark-200);
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+/* ── Blood Group Badge ──────────────────── */
+.blood-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--blood-600), var(--accent-rose));
+  color: white;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 10px rgba(220, 38, 38, 0.3);
+}
+
+/* ── Status Badge ───────────────────────── */
+.status-available {
+  color: var(--accent-emerald);
+  font-weight: 600;
+}
+
+.status-unavailable {
+  color: var(--blood-400);
+  font-weight: 600;
+}
+
+/* ── Toast / Messages ───────────────────── */
+.toast-success {
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: var(--accent-emerald);
+  font-weight: 500;
+  font-size: 0.9rem;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.toast-error {
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: var(--blood-400);
+  font-weight: 500;
+  font-size: 0.9rem;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* ── Gradient Orbs (Background Decoration) */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-red {
+  background: var(--blood-600);
+}
+
+.orb-pink {
+  background: var(--accent-pink);
+}
+
+.orb-amber {
+  background: var(--accent-amber);
+}
+
+/* ── Checkbox ───────────────────────────── */
+.checkbox-premium {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--blood-600);
+  cursor: pointer;
+}
+
+/* ── Divider ────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+  margin: 2rem 0;
+}
+
+/* ── Stat Card ──────────────────────────── */
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--blood-400), var(--accent-rose));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Loading Shimmer ────────────────────── */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* ── Mobile Adjustments ─────────────────── */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.7rem;
+  }
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+  .stat-value {
+    font-size: 1.8rem;
+  }
+}
